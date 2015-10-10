@@ -74,16 +74,14 @@ fi
 ## step 1: pre-configure
 #
 pre_configure() {
-# mostrando un mapa basico de instalacion
+# shows a base installation configuration
 test
 
-## configurando archivos:
-
-## eliminamos toda referencia erronea del /etc/hosts
+## configuring archive: prevent hosts problems
 $SED -i "/^$LAN_IPADDR*/d" /etc/hosts
 
-# modificar /etc/hosts para incorporar resolucion de nombre de equipo
-echo "# direccion ip del host" >> /etc/hosts
+# modify /etc/hosts to incorporate ldap server
+echo "# Route to ldap server" >> /etc/hosts
 echo "$LAN_IPADDR  $SERVERNAME $HOSTNAME_PREFIX" >> /etc/hosts
 
 # Defining the server name
